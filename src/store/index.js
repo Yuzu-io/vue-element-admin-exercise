@@ -8,7 +8,9 @@ import getters from './getters';
 Vue.use(Vuex)
 
 const state = {
-
+  user: {
+    username: window.localStorage.getItem('user' || '[]') == null ? '' : JSON.parse(window.localStorage.getItem('user' || '[]')).username
+  }
 }
 
 export default new Vuex.Store({

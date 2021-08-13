@@ -41,12 +41,15 @@ export default {
   },
   methods: {
     login () {
-
       getLogin(this.loginForm)
         .then(res => {
           console.log(res);
           if (res.code === 200) {
-            this.$router.push({ path: '/index' })
+            this.$store.commit('login', this.loginForm)
+            const path = this.$route.query.redirect
+            console.log(this.$route.query.redirect);
+            this.$router.replace({ path: path === '/' || path === undefined ? '/index' : path })
+            // this.$router.push({ path: '/index' })
           }
         })
         .catch(err => {

@@ -20,7 +20,10 @@ const routes = [
   },
   {
     path: '/index',
-    component: Appindex
+    component: Appindex,
+    meta:{
+      requireAuth:true
+    }
   },
 ]
 
